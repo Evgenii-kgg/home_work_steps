@@ -15,6 +15,7 @@ function List(props) {
             <button onClick={()=> props.action({actionType:'edit', data:item})}>✎</button>
             <button onClick={()=> props.action({actionType:'delete', data:item})}>✘</button>
 
+
           </div>
       ))}
     </div>

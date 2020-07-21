@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import List from "./list";
+import Form from './Form'
 
 class App extends React.Component {
   constructor(props) {
@@ -12,12 +13,12 @@ class App extends React.Component {
     };
   }
 
-  handleChangeData(event) {
+  handleChangeData = (event) => {
     this.setState({
       data: event,
     });
   }
-  handleChangeWay(event) {
+  handleChangeWay = (event) => {
     this.setState({
       way: event,
     });
@@ -113,29 +114,13 @@ class App extends React.Component {
     return (
       <div className="App">
         <div className="content">
-          <div style={{ display: "flex" }}>
-            <label>
-              Дата (ДД.ММ.ГГ)
-              <br />
-              <input
-                type="text"
-                name="data"
-                value={this.state.data}
-                onChange={(event) => this.handleChangeData(event.target.value)}
-              />
-            </label>
-            <br />
-            <label>
-              Пройдено км
-              <br />
-              <input
-                type="text"
-                name="way"
-                value={this.state.way}
-                onChange={(event) => this.handleChangeWay(event.target.value)}
-              />
-            </label>
-            <input type="submit" value="ОК" onClick={this.addItem} />
+        <Form 
+      ChangeData={this.handleChangeData}
+      ChangeWay={this.handleChangeWay}
+      Add={this.addItem}
+      data={this.state.data}
+      way={this.state.way}
+      />
           </div>
           <List
             items={this.state.itemList.sort((a, b) =>
@@ -143,7 +128,6 @@ class App extends React.Component {
             )}
             action={this.handelAction}
           />
-        </div>
       </div>
     );
   }
